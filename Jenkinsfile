@@ -56,7 +56,7 @@ pipeline {
         }
         stage('docker container deploy') {
             steps {
-                sh 'npm run compose:up -d' 
+                sh 'docker compose up -d' 
             }
         }
         stage('run command to tag local images') {
