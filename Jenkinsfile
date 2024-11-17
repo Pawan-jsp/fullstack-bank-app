@@ -7,7 +7,7 @@ pipeline {
     }
     
     environment {
-        SCANNER_HOME= tool 'sonar'
+        SCANNER_HOME= tool 'sonar-scanner'
     }
     
     stages {
@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Owasp scan') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependancy-check-report.xml'
+                dependencyCheck additionalArguments: '--scan	', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
         stage('trivy fs') {
